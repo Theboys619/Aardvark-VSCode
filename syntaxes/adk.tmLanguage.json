@@ -1,0 +1,108 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Aardvark",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#dblstring"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#constants"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#directives"
+		},
+		{
+			"include": "#functioncall"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.adk",
+					"match": "\\b(if|while|return)\\b"
+				},
+				{
+					"name": "keyword.adk",
+					"match": "\\b(funct|True|False)\\b"
+				},
+				{
+					"name": "keyword.operator.adk",
+					"match": "\\b(=|==|!=|\\+=|\\-=|\\+\\+|\\-\\-|\\&\\&|\\-|\\+|\\*|\\\/|\\%)\\b"
+				}
+			]
+		},
+		"dblstring": {
+			"name": "string.quoted.double.adk",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.adk",
+					"match": "\\\\(033|n|r|t|U|u|x[a-z0-9A-Z]{0,2})"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.single",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"name": "constant.character.escape.adk",
+					"match": "\\\\(033|n|r|t|U|u|x[a-z0-9A-Z]{0,2})"
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.numeric.adk",
+					"match": "\\-?\\d+(\\.\\d+)?"
+				}
+			]
+		},
+		"comments": {
+			"name": "comment.block.adk",
+			"begin": "\\\/",
+			"end": "\\\\"
+		},
+		"directives": {
+			"patterns": [
+				{
+					"match": "(#[\\w\\d$_]+) *(.*)",
+					"captures": {
+						"1": {
+							"name": "meta.preprocessor.adk"
+						},
+						"2": {
+							"name": "meta.preprocessor.string.adk"
+						}
+					}
+				}
+			]
+		},
+		"functioncall": {
+			"patterns": [
+				{
+					"match": "([a-zA-Z_\\$][a-zA-Z_\\$0-9]*) *\\(",
+					"captures": {
+						"1": {
+							"name": "entity.name.function.adk"
+						}
+					}
+				}
+			]
+		}
+	},
+	"scopeName": "source.adk"
+}

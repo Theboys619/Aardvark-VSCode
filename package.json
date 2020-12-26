@@ -1,0 +1,25 @@
+{
+    "name": "adk",
+    "displayName": "Aardvark",
+    "description": "aardvark language",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.50.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "adk",
+            "aliases": ["Aardvark", "adk"],
+            "extensions": [".adk"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "adk",
+            "scopeName": "source.adk",
+            "path": "./syntaxes/adk.tmLanguage.json"
+        }]
+    }
+}
